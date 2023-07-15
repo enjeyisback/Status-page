@@ -3,53 +3,46 @@
     <title>Status Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="index.css" />
-    <script src="index.js"></script>
+    <script>
+      // Define the correct password here
+      const correctPassword = '112233ee@@';
+
+      function showContentIfPasswordMatch() {
+        // Ask the user for the password
+        const userPassword = prompt('Enter the password to access this page:');
+
+        // Check if the user entered the correct password
+        if (userPassword === correctPassword) {
+          // Display the content
+          document.getElementById('content').style.display = 'block';
+        } else {
+          // Redirect or show an error message if the password is incorrect
+          alert('Incorrect password. Access denied.');
+          // You can redirect the user to another page using:
+          // window.location.href = 'another_page.html';
+        }
+      }
+    </script>
   </head>
   <body>
-    <div class="pageContainer">
+    <div id="content" class="pageContainer" style="display: none;">
+      <!-- Your existing content goes here -->
+      <!-- ... -->
+
       <div class="headline">
         <img src="logo.svg" alt="Logo" width="100px" />
         <span> System Status </span>
       </div>
-      <div id="reports" class="reportContainer"></div>
-      <div id="tooltip" class="tooltip" style="opacity: 0">
-        <div id="tooltipArrow" class="tooltipArrow"></div>
-        <div id="tooltipDateTime" class="tooltipDateTime"></div>
-        <div id="tooltipStatus" class="tooltipStatus"></div>
-        <hr />
-        <div id="tooltipDescription" class="tooltipDescription"></div>
-      </div>
-      <div id="templates" style="display: none">
-        <div
-          id="statusSquareTemplate"
-          class="statusSquare $color"
-          data-status="$color"
-        ></div>
-        <div id="statusLineTemplate" class="statusLine"></div>
-        <div
-          id="statusStreamContainerTemplate"
-          class="statusStreamContainer"
-        ></div>
-        <div id="statusContainerTemplate" class="statusContainer">
-          <div class="statusHeader">
-            <h6 class="statusTitle">$title&nbsp;</h6>
-            <div class="$color statusHeadline">$status</div>
-          </div>
-          <div class="statusSubtitle">
-            <div class="sectionUrl"><a href="$url">$url</a></div>
-            <div class="statusUptime">$upTime in the last 30 days</div>
-          </div>
-        </div>
-      </div>
+      <!-- ... rest of the content ... -->
+      <footer>
+        Copyright
+        <a href="https://status.jaiswalnitin.in">2023</a>.
+      </footer>
     </div>
-    <footer>
-      Copyright
-      <a href="https://status.jaiswalnitin.in"
-        >2023</a
-      >.
-    </footer>
+
+    <!-- Add a script to call the function when the page loads -->
+    <script>
+      showContentIfPasswordMatch();
+    </script>
   </body>
-  <script>
-    genAllReports();
-  </script>
 </html>
